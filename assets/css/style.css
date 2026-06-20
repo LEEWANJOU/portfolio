@@ -145,7 +145,10 @@ main {
   margin: 0px;
   border: none;
   position: relative;
+  overflow: hidden;
+  width: 100%;
 }
+
 
 .portfolio-page {
   width: 100%;
