@@ -26,32 +26,30 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.classList.remove('hero-active');
   });
 
-  // Portfolio Click to Fullscreen
-  var portfolioPages = document.querySelectorAll('.portfolio-page');
-  portfolioPages.forEach(function(page) {
-    page.addEventListener('click', function() {
-      if (page.classList.contains('fullscreen')) {
-        page.classList.remove('fullscreen');
-        document.body.style.overflow = 'auto';
-      } else {
-        // Remove fullscreen from other images
-        portfolioPages.forEach(function(p) {
-          p.classList.remove('fullscreen');
-        });
-        page.classList.add('fullscreen');
-        document.body.style.overflow = 'hidden';
+  // Portfolio Scroll Effect - Scale Based on Distance from Viewport Center
+  var pageWrappers = document.querySelectorAll('.page-wrapper');
+
+  function updateScales() {
+    var viewportCenter = window.innerHeight / 2;
+    pageWrappers.forEach(function(wrapper) {
+      var rect = wrapper.getBoundingClientRect();
+      var elementCenter = rect.top + rect.height / 2;
+      var distance = Math.abs(viewportCenter - elementCenter);
+      var maxDistance = window.innerHeight;
+      
+      var scale = Math.max(0.5, 1.3 - (distance / maxDistance) * 0.8);
+      var opacity = Math.max(0.6, 1 - (distance / maxDistance) * 0.4);
+      
+      var img = wrapper.querySelector('.portfolio-page');
+      if (img) {
+        img.style.transform = 'scale(' + scale + ')';
+        img.style.opacity = opacity;
       }
     });
-  });
+  }
 
-  // Scroll to close fullscreen
-  document.addEventListener('wheel', function(e) {
-    var fullscreenImg = document.querySelector('.portfolio-page.fullscreen');
-    if (fullscreenImg) {
-      fullscreenImg.classList.remove('fullscreen');
-      document.body.style.overflow = 'auto';
-    }
-  });
+  window.addEventListener('scroll', updateScales);
+  updateScales();
 
   // Set hero active
   document.body.classList.add('hero-active');
