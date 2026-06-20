@@ -92,7 +92,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 70vh;
+  min-height: 80vh;
   scroll-snap-align: center;
   scroll-snap-stop: always;
   padding: 5px 0;
