@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var main = document.getElementById('main');
   var heroImage = document.getElementById('heroImage');
 
-  var availablePages = [3,4,5,7,9,11,14,16,17,20,21,22,23,24,25,26,27,28,29,30,31];
+  var availablePages = [3,4,5,7,9,11,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31];
   var imageInterval = null;
 
   function showRandomImage() {
@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   bind('logoBtn', goToHero);
-  bind('portfolioBtn', function() { goToPortfolio(null); });
-  bind('universityBtn', function() { goToPortfolio('page-01'); });
+  bind('allBtn', function() { goToPortfolio(null); });
+  bind('academicBtn', function() { goToPortfolio('page-01'); });
   bind('internshipBtn', function() { goToPortfolio('page-12'); });
   bind('workBtn', function() { goToPortfolio('page-18'); });
   bind('aboutBtn', function() { goToPortfolio('about'); });
@@ -81,4 +81,14 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   window.addEventListener('scroll', updateScales);
   updateScales();
+
+  // Disable right-click
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // Disable copy, cut, drag
+  document.addEventListener('copy', function(e) { e.preventDefault(); });
+  document.addEventListener('cut', function(e) { e.preventDefault(); });
+  document.addEventListener('dragstart', function(e) { e.preventDefault(); });
 });
