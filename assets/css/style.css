@@ -106,7 +106,13 @@ main { position: relative; z-index: 1; }
   .nav-links a.nav-main { font-size: 12px; }
   .nav-links a.nav-sub { font-size: 10px; }
   .hero { height: 100vh; height: 100dvh; }
-  .hero-image { object-fit: contain; }
+  .hero-image {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
   .page-wrapper { min-height: 90vh; min-height: 90dvh; }
   .portfolio-page { max-width: 80%; }
   .about { padding: 80px 20px; margin-top: 60px; }
