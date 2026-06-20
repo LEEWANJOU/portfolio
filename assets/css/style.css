@@ -107,10 +107,11 @@ body {
   display: block;
   border-radius: 0px;
   box-shadow: none;
-  transform: scale(1);
+  transform: scale(0.3);
   transition: all 0.3s ease;
-  opacity: 1;
+  opacity: 0.5;
 }
+
 
 .page-wrapper.active .portfolio-page {
   transform: scale(1);
