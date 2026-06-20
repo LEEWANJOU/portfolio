@@ -82,14 +82,12 @@ main { position: relative; z-index: 1; }
 }
 .portfolio-page {
   width: 100%;
-  max-width: 85%;
+  max-width: 80%;
   height: auto;
   display: block;
-  border-radius: 0px;
-  box-shadow: none;
-  transform: scale(0.75);
+  transform: scale(0.6);
   transition: all 0.3s ease;
-  opacity: 0.75;
+  opacity: 0.5;
 }
 .portfolio-page:hover { filter: brightness(1.05); }
 
@@ -108,8 +106,9 @@ main { position: relative; z-index: 1; }
   .nav-links a.nav-main { font-size: 12px; }
   .nav-links a.nav-sub { font-size: 10px; }
   .hero { height: 100vh; height: 100dvh; }
+  .hero-image { object-fit: contain; }
   .page-wrapper { min-height: 90vh; min-height: 90dvh; }
-  .portfolio-page { max-width: 92%; }
+  .portfolio-page { max-width: 80%; }
   .about { padding: 80px 20px; margin-top: 60px; }
   .about-text h3 { font-size: 20px; }
   .about-text p { font-size: 12px; }
