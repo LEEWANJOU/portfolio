@@ -97,7 +97,8 @@ main { position: relative; z-index: 1; }
 
 .about { padding: 100px 40px; background: #ffffff; margin-top: 80px; }
 .about-text { max-width: 600px; margin: 0 auto; text-align: center; }
-.about-text h3 { font-size: 24px; font-weight: 300; margin-bottom: 20px; letter-spacing: 1px; color: #2a2a2a; }
+.about-text h2 { font-size: 32px; font-weight: 400; margin-bottom: 40px; letter-spacing: 2px; color: #2a2a2a; }
+.about-text h3 { font-size: 18px; font-weight: 300; margin-bottom: 20px; letter-spacing: 1px; color: #2a2a2a; }
 .about-text p { color: #555; margin-bottom: 12px; line-height: 1.8; font-size: 13px; letter-spacing: 0.5px; }
 .about-text p:last-child { margin-bottom: 0; }
 
@@ -119,6 +120,7 @@ main { position: relative; z-index: 1; }
   .page-wrapper { min-height: 90vh; min-height: 90dvh; }
   .portfolio-page { max-width: 80%; }
   .about { padding: 80px 20px; margin-top: 60px; }
-  .about-text h3 { font-size: 20px; }
+  .about-text h2 { font-size: 26px; }
+  .about-text h3 { font-size: 16px; }
   .about-text p { font-size: 12px; }
 }
