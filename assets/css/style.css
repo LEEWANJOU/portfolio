@@ -95,7 +95,7 @@ body {
   min-height: 80vh;
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  padding: 5px 0;
+  padding: 10px 0;
   margin: 0px;
   border: none;
 }
