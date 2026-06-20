@@ -1,24 +1,26 @@
-// Intersection Observer for page scaling effect
 document.addEventListener('DOMContentLoaded', () => {
   const pageWrappers = document.querySelectorAll('.page-wrapper');
 
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.6 // Trigger when 60% of element is visible
-  };
+  const updateScales = () => {
+    const viewportCenter = window.innerHeight / 2;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      } else {
-        entry.target.classList.remove('active');
+    pageWrappers.forEach(wrapper => {
+      const rect = wrapper.getBoundingClientRect();
+      const elementCenter = rect.top + rect.height / 2;
+      const distance = Math.abs(viewportCenter - elementCenter);
+      const maxDistance = window.innerHeight;
+      
+      const scale = Math.max(0.3, 1.2 - (distance / maxDistance) * 0.9);
+      const opacity = Math.max(0.5, 1 - (distance / maxDistance) * 0.5);
+      
+      const img = wrapper.querySelector('.portfolio-page');
+      if (img) {
+        img.style.transform = `scale(${scale})`;
+        img.style.opacity = opacity;
       }
     });
-  }, observerOptions);
+  };
 
-  pageWrappers.forEach(wrapper => {
-    observer.observe(wrapper);
-  });
+  window.addEventListener('scroll', updateScales, { passive: true });
+  updateScales();
 });
