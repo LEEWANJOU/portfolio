@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
     imageInterval = setInterval(showRandomImage, 3000);
   }
 
-  // 最優先：馬上開始顯示隨機圖片
   if (hero && heroImage) {
     document.body.classList.add('hero-active');
     startRotation();
