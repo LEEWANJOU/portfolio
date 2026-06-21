@@ -13,7 +13,7 @@
     <div class="container">
       <img src="./assets/logo.jpg" alt="WANJOU LEE Logo" class="logo-img" id="logoBtn">
       <nav class="nav-links">
-        <a href="javascript:void(0)" class="nav-main" style="cursor: default;">Portfolio</a>
+        <a href="javascript:void(0)" class="nav-main" id="portfolioBtn">Portfolio</a>
         <a href="javascript:void(0)" class="nav-sub" id="allBtn">All</a>
         <a href="javascript:void(0)" class="nav-sub" id="academicBtn">Academic</a>
         <a href="javascript:void(0)" class="nav-sub" id="internshipBtn">Internship</a>
@@ -27,40 +27,61 @@
     <img id="heroImage" src="" alt="Portfolio" class="hero-image">
   </section>
 
+  <section class="portfolio-menu" id="portfolioMenu">
+    <div class="portfolio-menu-grid">
+      <div class="portfolio-menu-item" id="menuPage01">
+        <img src="./assets/pages/Page-01.jpg" alt="Page 01-05">
+        <span class="portfolio-menu-label">01 – 05</span>
+      </div>
+      <div class="portfolio-menu-item" id="menuPage06">
+        <img src="./assets/pages/Page-06.jpg" alt="Page 06-11">
+        <span class="portfolio-menu-label">06 – 11</span>
+      </div>
+      <div class="portfolio-menu-item" id="menuPage12">
+        <img src="./assets/pages/Page-12.jpg" alt="Page 12-17">
+        <span class="portfolio-menu-label">12 – 17</span>
+      </div>
+      <div class="portfolio-menu-item" id="menuPage18">
+        <img src="./assets/pages/Page-18.jpg" alt="Page 18-31">
+        <span class="portfolio-menu-label">18 – 31</span>
+      </div>
+    </div>
+  </section>
+
   <main id="main" style="display: none;">
     <section id="portfolio" class="portfolio">
       <div class="pages-snap-container" id="pagesContainer">
-        <div class="page-wrapper" id="page-01"><img src="./assets/pages/Page-01.jpg" alt="Portfolio page 1" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-02.jpg" alt="Portfolio page 2" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-03.jpg" alt="Portfolio page 3" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-04.jpg" alt="Portfolio page 4" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-05.jpg" alt="Portfolio page 5" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-06.jpg" alt="Portfolio page 6" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-07.jpg" alt="Portfolio page 7" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-08.jpg" alt="Portfolio page 8" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-09.jpg" alt="Portfolio page 9" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-10.jpg" alt="Portfolio page 10" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-11.jpg" alt="Portfolio page 11" class="portfolio-page"></div>
-        <div class="page-wrapper" id="page-12"><img src="./assets/pages/Page-12.jpg" alt="Portfolio page 12" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-13.jpg" alt="Portfolio page 13" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-14.jpg" alt="Portfolio page 14" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-15.jpg" alt="Portfolio page 15" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-16.jpg" alt="Portfolio page 16" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-17.jpg" alt="Portfolio page 17" class="portfolio-page"></div>
-        <div class="page-wrapper" id="page-18"><img src="./assets/pages/Page-18.jpg" alt="Portfolio page 18" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-19.jpg" alt="Portfolio page 19" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-20.jpg" alt="Portfolio page 20" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-21.jpg" alt="Portfolio page 21" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-22.jpg" alt="Portfolio page 22" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-23.jpg" alt="Portfolio page 23" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-24.jpg" alt="Portfolio page 24" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-25.jpg" alt="Portfolio page 25" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-26.jpg" alt="Portfolio page 26" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-27.jpg" alt="Portfolio page 27" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-28.jpg" alt="Portfolio page 28" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-29.jpg" alt="Portfolio page 29" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-30.jpg" alt="Portfolio page 30" class="portfolio-page"></div>
-        <div class="page-wrapper"><img src="./assets/pages/Page-31.jpg" alt="Portfolio page 31" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="1"><img src="./assets/pages/Page-01.jpg" alt="Portfolio page 1" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="2"><img src="./assets/pages/Page-02.jpg" alt="Portfolio page 2" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="3"><img src="./assets/pages/Page-03.jpg" alt="Portfolio page 3" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="4"><img src="./assets/pages/Page-04.jpg" alt="Portfolio page 4" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="5"><img src="./assets/pages/Page-05.jpg" alt="Portfolio page 5" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="6"><img src="./assets/pages/Page-06.jpg" alt="Portfolio page 6" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="7"><img src="./assets/pages/Page-07.jpg" alt="Portfolio page 7" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="8"><img src="./assets/pages/Page-08.jpg" alt="Portfolio page 8" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="9"><img src="./assets/pages/Page-09.jpg" alt="Portfolio page 9" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="10"><img src="./assets/pages/Page-10.jpg" alt="Portfolio page 10" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="11"><img src="./assets/pages/Page-11.jpg" alt="Portfolio page 11" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="12"><img src="./assets/pages/Page-12.jpg" alt="Portfolio page 12" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="13"><img src="./assets/pages/Page-13.jpg" alt="Portfolio page 13" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="14"><img src="./assets/pages/Page-14.jpg" alt="Portfolio page 14" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="15"><img src="./assets/pages/Page-15.jpg" alt="Portfolio page 15" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="16"><img src="./assets/pages/Page-16.jpg" alt="Portfolio page 16" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="17"><img src="./assets/pages/Page-17.jpg" alt="Portfolio page 17" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="18"><img src="./assets/pages/Page-18.jpg" alt="Portfolio page 18" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="19"><img src="./assets/pages/Page-19.jpg" alt="Portfolio page 19" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="20"><img src="./assets/pages/Page-20.jpg" alt="Portfolio page 20" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="21"><img src="./assets/pages/Page-21.jpg" alt="Portfolio page 21" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="22"><img src="./assets/pages/Page-22.jpg" alt="Portfolio page 22" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="23"><img src="./assets/pages/Page-23.jpg" alt="Portfolio page 23" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="24"><img src="./assets/pages/Page-24.jpg" alt="Portfolio page 24" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="25"><img src="./assets/pages/Page-25.jpg" alt="Portfolio page 25" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="26"><img src="./assets/pages/Page-26.jpg" alt="Portfolio page 26" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="27"><img src="./assets/pages/Page-27.jpg" alt="Portfolio page 27" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="28"><img src="./assets/pages/Page-28.jpg" alt="Portfolio page 28" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="29"><img src="./assets/pages/Page-29.jpg" alt="Portfolio page 29" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="30"><img src="./assets/pages/Page-30.jpg" alt="Portfolio page 30" class="portfolio-page"></div>
+        <div class="page-wrapper" data-page="31"><img src="./assets/pages/Page-31.jpg" alt="Portfolio page 31" class="portfolio-page"></div>
       </div>
     </section>
 
@@ -70,7 +91,7 @@
           <h2>About</h2>
           <h3>Lee Wanjou</h3>
           <p>Born in Taiwan, 1991</p>
-          <p>Graduate of Tunghai University Department of Landscape Architecture</p>
+          <p>Graduate of Tunghai University<br>Department of Landscape Architecture</p>
         </div>
       </div>
     </section>
@@ -83,3 +104,5 @@
   <script src="./assets/js/main.js"></script>
 </body>
 </html>
+
+
