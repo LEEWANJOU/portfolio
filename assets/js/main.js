@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   var hero = document.getElementById('hero');
+  var portfolioMenu = document.getElementById('portfolioMenu');
   var main = document.getElementById('main');
   var heroImage = document.getElementById('heroImage');
 
@@ -42,49 +43,26 @@ document.addEventListener('DOMContentLoaded', function() {
     imageInterval = setInterval(showRandomImage, 3000);
   }
 
-  if (hero && heroImage) {
-    document.body.classList.add('hero-active');
-    startRotation();
-  }
-
-  function goToPortfolio(targetId) {
-    if (hero) hero.classList.add('hidden');
-    if (main) main.style.display = 'block';
-    document.body.classList.remove('hero-active');
-    if (imageInterval) clearInterval(imageInterval);
-    if (targetId) {
-      setTimeout(function() {
-        var el = document.getElementById(targetId);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 150);
-    }
-  }
-
-  function goToHero() {
-    if (hero) hero.classList.remove('hidden');
-    if (main) main.style.display = 'none';
-    document.body.classList.add('hero-active');
-    window.scrollTo(0, 0);
-    startRotation();
-  }
-
-  function bind(id, handler) {
-    var el = document.getElementById(id);
-    if (el) el.addEventListener('click', handler);
-  }
-
-  bind('logoBtn', goToHero);
-  bind('allBtn', function() { goToPortfolio(null); });
-  bind('academicBtn', function() { goToPortfolio('page-01'); });
-  bind('internshipBtn', function() { goToPortfolio('page-12'); });
-  bind('workBtn', function() { goToPortfolio('page-18'); });
-  bind('aboutBtn', function() { goToPortfolio('about'); });
-
   var pageWrappers = document.querySelectorAll('.page-wrapper');
+
+  function filterPages(minPage, maxPage) {
+    for (var i = 0; i < pageWrappers.length; i++) {
+      var wrapper = pageWrappers[i];
+      var pageNum = parseInt(wrapper.getAttribute('data-page'), 10);
+      if (pageNum >= minPage && pageNum <= maxPage) {
+        wrapper.style.display = 'flex';
+      } else {
+        wrapper.style.display = 'none';
+      }
+    }
+    updateScales();
+  }
+
   function updateScales() {
     var viewportCenter = window.innerHeight / 2;
     for (var i = 0; i < pageWrappers.length; i++) {
       var wrapper = pageWrappers[i];
+      if (wrapper.style.display === 'none') continue;
       var rect = wrapper.getBoundingClientRect();
       var elementCenter = rect.top + rect.height / 2;
       var distance = Math.abs(viewportCenter - elementCenter);
@@ -99,7 +77,65 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   window.addEventListener('scroll', updateScales);
-  updateScales();
+
+  function hideAllScreens() {
+    if (hero) hero.classList.add('hidden');
+    if (portfolioMenu) portfolioMenu.style.display = 'none';
+    if (main) main.style.display = 'none';
+    document.body.classList.remove('hero-active');
+    if (imageInterval) clearInterval(imageInterval);
+  }
+
+  function enterMain(minPage, maxPage, scrollTargetId) {
+    hideAllScreens();
+    main.style.display = 'block';
+    filterPages(minPage, maxPage);
+    if (scrollTargetId) {
+      setTimeout(function() {
+        var el = document.getElementById(scrollTargetId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    } else {
+      setTimeout(function() { window.scrollTo(0, 0); }, 50);
+    }
+  }
+
+  function showPortfolioMenu() {
+    hideAllScreens();
+    portfolioMenu.style.display = 'flex';
+    window.scrollTo(0, 0);
+  }
+
+  function goToHero() {
+    hideAllScreens();
+    hero.classList.remove('hidden');
+    document.body.classList.add('hero-active');
+    window.scrollTo(0, 0);
+    startRotation();
+  }
+
+  function bind(id, handler) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('click', handler);
+  }
+
+  bind('logoBtn', goToHero);
+  bind('portfolioBtn', showPortfolioMenu);
+  bind('allBtn', function() { enterMain(1, 31, null); });
+  bind('academicBtn', function() { enterMain(1, 11, null); });
+  bind('internshipBtn', function() { enterMain(12, 17, null); });
+  bind('workBtn', function() { enterMain(18, 31, null); });
+  bind('aboutBtn', function() { enterMain(1, 31, 'about'); });
+
+  bind('menuPage01', function() { enterMain(1, 5, null); });
+  bind('menuPage06', function() { enterMain(6, 11, null); });
+  bind('menuPage12', function() { enterMain(12, 17, null); });
+  bind('menuPage18', function() { enterMain(18, 31, null); });
+
+  if (hero && heroImage) {
+    document.body.classList.add('hero-active');
+    startRotation();
+  }
 
   document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
   document.addEventListener('copy', function(e) { e.preventDefault(); });
