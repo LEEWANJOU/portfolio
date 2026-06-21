@@ -44,7 +44,7 @@ main { position: relative; z-index: 1; }
 
 .project-intro { width: 100%; min-height: auto; display: block; padding: 80px 0 10px 30px; }
 .project-intro-inner { max-width: 600px; text-align: left; margin: 0; }
-.project-intro-inner h2 { font-size: 18px; font-weight: 400; color: #7a2330; margin-bottom: 16px; letter-spacing: 1px; }
+.project-intro-inner h2 { font-size: 15px; font-weight: 400; color: #2a2a2a; margin-bottom: 16px; letter-spacing: 1px; }
 .project-intro-inner p { font-size: 13px; color: #444; margin-bottom: 8px; line-height: 1.7; }
 .project-intro-inner p strong { font-weight: 700; color: #2a2a2a; }
 .project-intro.academic-style .project-intro-inner h2 { font-size: 20px; }
