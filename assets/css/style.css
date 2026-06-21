@@ -32,7 +32,7 @@ img { max-width: 100%; height: auto; -webkit-user-drag: none; }
 .portfolio-menu-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
 .portfolio-menu-item:hover img { transform: scale(1.08); }
 
-.about-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; background: #ffffff; z-index: 40; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 90px 20px 20px; overflow-y: auto; }
+.about-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; background: #ffffff; z-index: 40; display: none; flex-direction: column; justify-content: flex-start; align-items: flex-start; padding: 90px 20px 20px; overflow-y: auto; }
 
 main { position: relative; z-index: 1; }
 
@@ -49,7 +49,7 @@ main { position: relative; z-index: 1; }
 .project-intro-inner p strong { font-weight: 700; color: #2a2a2a; }
 .project-intro.academic-style .project-intro-inner h2 { font-size: 20px; }
 
-.about-text { max-width: 600px; margin: 0 auto; text-align: center; }
+.about-text { max-width: 600px; margin: 0; text-align: left; padding-left: 30px; }
 .about-text h2 { font-size: 32px; font-weight: 400; margin-bottom: 40px; letter-spacing: 2px; color: #2a2a2a; }
 .about-text h3 { font-size: 13px; font-weight: 300; margin-bottom: 12px; letter-spacing: 0.5px; color: #555; }
 .about-text p { color: #555; margin-bottom: 12px; line-height: 1.8; font-size: 13px; letter-spacing: 0.5px; }
@@ -77,4 +77,5 @@ main { position: relative; z-index: 1; }
   .about-text h2 { font-size: 26px; }
   .about-text h3 { font-size: 12px; }
   .about-text p { font-size: 12px; }
+  .about-text { padding-left: 20px; }
 }
