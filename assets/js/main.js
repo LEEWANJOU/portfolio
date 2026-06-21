@@ -28,12 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
   function getNextPage() {
     if (shuffledPages.length === 0) {
       shuffledPages = shuffleArray(availablePages);
-      if (shuffledPages.length > 1 && shuffledPages[shuffledPages.length - 1] === lastPage) {
-        var first = shuffledPages.pop();
-        shuffledPages.unshift(first);
-      }
     }
     var page = shuffledPages.pop();
+    if (page === lastPage && shuffledPages.length > 0) {
+      var page2 = shuffledPages.pop();
+      shuffledPages.unshift(page);
+      page = page2;
+    }
     lastPage = page;
     return page;
   }
@@ -54,16 +55,36 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   var pageWrappers = document.querySelectorAll('.page-wrapper');
+  var pagesContainer = document.getElementById('pagesContainer');
+
+  function getWrapperByPage(p) {
+    for (var i = 0; i < pageWrappers.length; i++) {
+      if (parseInt(pageWrappers[i].getAttribute('data-page'), 10) === p) return pageWrappers[i];
+    }
+    return null;
+  }
+  function reorderPages(orderedPages) {
+    for (var i = 0; i < orderedPages.length; i++) {
+      var w = getWrapperByPage(orderedPages[i]);
+      if (w) pagesContainer.appendChild(w);
+    }
+  }
 
   function filterPagesRange(minPage, maxPage) {
+    var ordered = [];
+    for (var p = minPage; p <= maxPage; p++) {
+      if (getWrapperByPage(p)) ordered.push(p);
+    }
+    reorderPages(ordered);
     for (var i = 0; i < pageWrappers.length; i++) {
       var w = pageWrappers[i];
-      var p = parseInt(w.getAttribute('data-page'), 10);
-      w.style.display = (p >= minPage && p <= maxPage) ? 'flex' : 'none';
+      var pg = parseInt(w.getAttribute('data-page'), 10);
+      w.style.display = (pg >= minPage && pg <= maxPage) ? 'flex' : 'none';
     }
     updateScales();
   }
   function filterPagesList(list) {
+    reorderPages(list);
     for (var i = 0; i < pageWrappers.length; i++) {
       var w = pageWrappers[i];
       var p = parseInt(w.getAttribute('data-page'), 10);
