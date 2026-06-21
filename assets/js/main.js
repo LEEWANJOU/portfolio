@@ -119,18 +119,32 @@ document.addEventListener('DOMContentLoaded', function() {
     if (el) el.addEventListener('click', handler);
   }
 
-  bind('logoBtn', goToHero);
-  bind('portfolioBtn', showPortfolioMenu);
-  bind('allBtn', function() { enterMain(1, 31, null); });
-  bind('academicBtn', function() { enterMain(1, 11, null); });
-  bind('internshipBtn', function() { enterMain(12, 17, null); });
-  bind('workBtn', function() { enterMain(18, 31, null); });
-  bind('aboutBtn', function() { enterMain(1, 31, 'about'); });
+  var navItems = ['allBtn', 'academicBtn', 'internshipBtn', 'workBtn', 'aboutBtn'];
+  function setActiveNav(activeId) {
+    for (var i = 0; i < navItems.length; i++) {
+      var el = document.getElementById(navItems[i]);
+      if (el) {
+        if (navItems[i] === activeId) {
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
+        }
+      }
+    }
+  }
 
-  bind('menuPage01', function() { enterMain(1, 5, null); });
-  bind('menuPage06', function() { enterMain(6, 11, null); });
-  bind('menuPage12', function() { enterMain(12, 17, null); });
-  bind('menuPage18', function() { enterMain(18, 31, null); });
+  bind('logoBtn', function() { setActiveNav(null); goToHero(); });
+  bind('portfolioBtn', function() { setActiveNav(null); showPortfolioMenu(); });
+  bind('allBtn', function() { setActiveNav('allBtn'); enterMain(1, 31, null); });
+  bind('academicBtn', function() { setActiveNav('academicBtn'); enterMain(1, 11, null); });
+  bind('internshipBtn', function() { setActiveNav('internshipBtn'); enterMain(12, 17, null); });
+  bind('workBtn', function() { setActiveNav('workBtn'); enterMain(18, 31, null); });
+  bind('aboutBtn', function() { setActiveNav('aboutBtn'); enterMain(1, 31, 'about'); });
+
+  bind('menuPage01', function() { setActiveNav('academicBtn'); enterMain(1, 5, null); });
+  bind('menuPage06', function() { setActiveNav('academicBtn'); enterMain(6, 11, null); });
+  bind('menuPage12', function() { setActiveNav('internshipBtn'); enterMain(12, 17, null); });
+  bind('menuPage18', function() { setActiveNav('workBtn'); enterMain(18, 31, null); });
 
   if (hero && heroImage) {
     document.body.classList.add('hero-active');
