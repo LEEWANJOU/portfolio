@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var availablePages = [3,4,5,7,9,11,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31];
   var shuffledPages = [];
   var imageInterval = null;
+  var lastPage = null;
 
   function shuffleArray(arr) {
     var array = arr.slice();
@@ -25,8 +26,16 @@ document.addEventListener('DOMContentLoaded', function() {
     return array;
   }
   function getNextPage() {
-    if (shuffledPages.length === 0) shuffledPages = shuffleArray(availablePages);
-    return shuffledPages.pop();
+    if (shuffledPages.length === 0) {
+      shuffledPages = shuffleArray(availablePages);
+      if (shuffledPages.length > 1 && shuffledPages[shuffledPages.length - 1] === lastPage) {
+        var first = shuffledPages.pop();
+        shuffledPages.unshift(first);
+      }
+    }
+    var page = shuffledPages.pop();
+    lastPage = page;
+    return page;
   }
   function showRandomImage() {
     if (!heroImage) return;
@@ -39,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 600);
   }
   function startRotation() {
-    showRandomImage();
     if (imageInterval) clearInterval(imageInterval);
+    showRandomImage();
     imageInterval = setInterval(showRandomImage, 3000);
   }
 
