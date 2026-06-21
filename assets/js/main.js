@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var pageNum = nextPage < 10 ? '0' + nextPage : '' + nextPage;
     heroImage.style.opacity = '0';
     setTimeout(function() {
-      heroImage.src = './assets/pages/Page-' + pageNum + '.jpg';
+      heroImage.src = './assets/pages/Page-' + pageNum + '.jpeg';
       heroImage.style.opacity = '1';
     }, 600);
   }
