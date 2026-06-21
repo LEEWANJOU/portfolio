@@ -11,7 +11,11 @@
 <body>
   <header class="navbar">
     <div class="container">
-      <img src="./assets/logo.jpeg" alt="WANJOU LEE Logo" class="logo-img" id="logoBtn">
+      <div class="logo-wrap" id="logoBtn">
+        <img src="./assets/pages/logo.jpeg" alt="WANJOU LEE" class="logo-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='inline';">
+        <span class="logo-text" style="display:none;">WANJOU LEE</span>
+      </div>
       <nav class="nav-links">
         <a href="javascript:void(0)" class="nav-main" id="portfolioBtn">Portfolio</a>
         <a href="javascript:void(0)" class="nav-sub" id="allBtn">All</a>
