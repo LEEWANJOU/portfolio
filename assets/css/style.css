@@ -42,6 +42,7 @@ img { max-width: 100%; height: auto; -webkit-user-drag: none; }
 .nav-links a.nav-sub { font-size: 11px; font-weight: 300; letter-spacing: 0.5px; opacity: 0.7; }
 .nav-links a:hover { opacity: 0.6; }
 #portfolioBtn { font-weight: 700; color: #1a1a1a; }
+.nav-links a.active { font-weight: 700; opacity: 1; }
 
 .hero {
   position: fixed;
@@ -105,16 +106,6 @@ img { max-width: 100%; height: auto; -webkit-user-drag: none; }
   transition: transform 0.4s ease;
 }
 .portfolio-menu-item:hover img { transform: scale(1.08); }
-.portfolio-menu-label {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  font-size: 11px;
-  letter-spacing: 1px;
-  color: #ffffff;
-  background: rgba(0,0,0,0.55);
-  padding: 4px 8px;
-}
 
 main { position: relative; z-index: 1; }
 
@@ -170,7 +161,6 @@ main { position: relative; z-index: 1; }
   }
   .portfolio-menu { padding: 75px 15px 15px; }
   .portfolio-menu-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .portfolio-menu-label { font-size: 10px; }
   .page-wrapper { min-height: 90vh; min-height: 90dvh; }
   .portfolio-page { max-width: 80%; }
   .about { padding: 80px 20px; margin-top: 60px; }
