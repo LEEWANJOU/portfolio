@@ -208,3 +208,4 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('cut', function(e) { e.preventDefault(); });
   document.addEventListener('dragstart', function(e) { e.preventDefault(); });
 });
+
