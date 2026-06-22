@@ -13,34 +13,23 @@ document.addEventListener('DOMContentLoaded', function() {
   var introIds = ['introAcad01','introAcad06','introIntern38','introIntern32','introWork20','introWork24','introWork26','introWork37','introWork33','introWork34'];
 
   var availablePages = [3,4,5,7,9,11,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31];
-  var shuffledPages = [];
   var imageInterval = null;
-  var lastPage = null;
+  var recentPages = [];
+  var historySize = 6;
 
-  function shuffleArray(arr) {
-    var array = arr.slice();
-    for (var i = array.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i]; array[i] = array[j]; array[j] = temp;
-    }
-    return array;
-  }
-  function getNextPage() {
-    if (shuffledPages.length === 0) {
-      shuffledPages = shuffleArray(availablePages);
-    }
-    var page = shuffledPages.pop();
-    if (page === lastPage && shuffledPages.length > 0) {
-      var page2 = shuffledPages.pop();
-      shuffledPages.unshift(page);
-      page = page2;
-    }
-    lastPage = page;
+  function pickPage() {
+    var candidates = availablePages.filter(function(p) {
+      return recentPages.indexOf(p) === -1;
+    });
+    if (candidates.length === 0) candidates = availablePages.slice();
+    var page = candidates[Math.floor(Math.random() * candidates.length)];
+    recentPages.push(page);
+    if (recentPages.length > historySize) recentPages.shift();
     return page;
   }
   function showRandomImage() {
     if (!heroImage) return;
-    var nextPage = getNextPage();
+    var nextPage = pickPage();
     var pageNum = nextPage < 10 ? '0' + nextPage : '' + nextPage;
     heroImage.style.opacity = '0';
     setTimeout(function() {
